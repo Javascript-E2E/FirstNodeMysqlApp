@@ -1,0 +1,2 @@
+# FirstNodeMysqlApp
+NodeJS + expressJS + Mysql 

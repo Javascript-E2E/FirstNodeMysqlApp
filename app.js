@@ -46,4 +46,4 @@ app.get('/getCountriesByContinent?:continent',function(req,resp){
     })
 })
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);

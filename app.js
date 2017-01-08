@@ -13,7 +13,6 @@ var connection = mysql.createPool({
 app.get('/getAllCounties', function(req, resp){
     connection.getConnection(function(error,tempconnect){
         if(error){
-            tempconnect.release();
             resp.json(error);
         }else{
             tempconnect.query('select * from country', function(error, rows, fields){

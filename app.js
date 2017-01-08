@@ -4,7 +4,7 @@ var app = express();
 
 var connection = mysql.createPool({
     connectionLimit:50,
-    host:'mysql://b6ba3577c42d6f:610bd226@us-cdbr-iron-east-04.cleardb.net/heroku_b53d728efd81dd1?reconnect=true',
+    host:'us-cdbr-iron-east-04.cleardb.net',
     user:'b6ba3577c42d6f',
     password: '610bd226',
     database: 'heroku_b53d728efd81dd1'
@@ -15,7 +15,7 @@ app.get('/getAllCounties', function(req, resp){
         if(error){
             resp.json(error);
         }else{
-            tempconnect.query('select * from country', function(error, rows, fields){
+            tempconnect.query('select * from contact_informations', function(error, rows, fields){
                 tempconnect.release();
                 console.log(req.body);
                  if(error){
@@ -34,7 +34,7 @@ app.get('/getCountriesByContinent?:continent',function(req,resp){
         if(error){
             resp.json(error);
         }else{
-            tempconnect.query('select * from country where Continent = ?',[req.query.continent],function(error,rows,fields){
+            tempconnect.query('select * from contact_informations where Continent = ?',[req.query.continent],function(error,rows,fields){
                 tempconnect.release();
                 if(error){
                     resp.json(error);

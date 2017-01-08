@@ -4,10 +4,10 @@ var app = express();
 
 var connection = mysql.createPool({
     connectionLimit:50,
-    host:'localhost',
-    user:'root',
-    password: 'Chandra@88',
-    database: 'world'
+    host:'mysql://b6ba3577c42d6f:610bd226@us-cdbr-iron-east-04.cleardb.net/heroku_b53d728efd81dd1?reconnect=true',
+    user:'b6ba3577c42d6f',
+    password: '610bd226',
+    database: 'heroku_b53d728efd81dd1'
 });
 
 app.get('/getAllCounties', function(req, resp){

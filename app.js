@@ -15,7 +15,7 @@ app.get('/getAllCounties', function(req, resp){
         if(error){
             resp.json(error);
         }else{
-            tempconnect.query('select * from country', function(error, rows, fields){
+            tempconnect.query('select * from contact_informations', function(error, rows, fields){
                 tempconnect.release();
                 console.log(req.body);
                  if(error){

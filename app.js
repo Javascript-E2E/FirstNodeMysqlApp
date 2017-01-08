@@ -10,7 +10,7 @@ var connection = mysql.createPool({
     database: 'heroku_b53d728efd81dd1'
 });
 
-app.get('/getAllCounties', function(req, resp){
+app.get('/getAllcontactDetails', function(req, resp){
     connection.getConnection(function(error,tempconnect){
         if(error){
             resp.json(error);
@@ -29,12 +29,12 @@ app.get('/getAllCounties', function(req, resp){
     })
 })
 
-app.get('/getCountriesByContinent?:continent',function(req,resp){
+app.get('/getContactBy?:phone_number',function(req,resp){
     connection.getConnection(function(error, tempconnect){
         if(error){
             resp.json(error);
         }else{
-            tempconnect.query('select * from contact_informations where Continent = ?',[req.query.continent],function(error,rows,fields){
+            tempconnect.query('select * from contact_informations where phone_number = ?',[req.query.phone_number],function(error,rows,fields){
                 tempconnect.release();
                 if(error){
                     resp.json(error);

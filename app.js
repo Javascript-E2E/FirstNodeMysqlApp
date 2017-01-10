@@ -17,6 +17,7 @@ app.get('/getAllcontactDetails', function(req, resp){
         }else{
             tempconnect.query('select * from contact_informations', function(error, rows, fields){
                 tempconnect.release();
+                //connection.end();
                 console.log(req.body);
                  if(error){
                     resp.json(error);

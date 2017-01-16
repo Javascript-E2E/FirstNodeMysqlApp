@@ -2,6 +2,16 @@ var express = require('express');
 var mysql = require('mysql');
 var app = express();
 
+var server;
+
+var start = exports.start = function start(callback){
+    server = app.listen(process.env.PORT || 5000, callback);
+}
+
+var stop = exports.stop = function stop(callback){
+    server.close(callback);
+}
+
 var connection = mysql.createPool({
     connectionLimit:50,
     host:'us-cdbr-iron-east-04.cleardb.net',
@@ -47,4 +57,4 @@ app.get('/getContactBy?:phone_number',function(req,resp){
     })
 })
 
-app.listen(process.env.PORT || 5000);
+//app.listen(process.env.PORT || 5000);

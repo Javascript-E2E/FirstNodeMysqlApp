@@ -11,7 +11,7 @@ var start = exports.start = function start(callback){
 var stop = exports.stop = function stop(callback){
     server.close(callback);
 }
-
+start();
 var connection = mysql.createPool({
     connectionLimit:50,
     host:'us-cdbr-iron-east-04.cleardb.net',

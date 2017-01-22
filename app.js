@@ -1,33 +1,15 @@
-var express = require('express');
-var mysql = require('mysql');
-var app = express();
+var db = require('./config/db');
+var nodeServer = require('./config/server');
 
-var server;
+nodeServer.start();
 
-var start = exports.start = function start(callback){
-    server = app.listen(process.env.PORT || 5000, callback);
-}
-
-var stop = exports.stop = function stop(callback){
-    server.close(callback);
-}
-start();
-var connection = mysql.createPool({
-    connectionLimit:50,
-    host:'us-cdbr-iron-east-04.cleardb.net',
-    user:'b6ba3577c42d6f',
-    password: '610bd226',
-    database: 'heroku_b53d728efd81dd1'
-});
-
-app.get('/getAllcontactDetails', function(req, resp){
-    connection.getConnection(function(error,tempconnect){
+nodeServer.app.get('/getAllcontactDetails', function(req, resp){
+    db.dbConnection.getConnection(function(error,tempconnect){
         if(error){
             resp.json(error);
         }else{
             tempconnect.query('select * from contact_informations', function(error, rows, fields){
                 tempconnect.release();
-                //connection.end();
                 console.log(req.body);
                  if(error){
                     resp.json(error);
@@ -40,8 +22,8 @@ app.get('/getAllcontactDetails', function(req, resp){
     })
 })
 
-app.get('/getContactBy?:phone_number',function(req,resp){
-    connection.getConnection(function(error, tempconnect){
+nodeServer.app.get('/getContactBy?:phone_number',function(req,resp){
+    dbConnection.getConnection(function(error, tempconnect){
         if(error){
             resp.json(error);
         }else{

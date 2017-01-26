@@ -1,7 +1,7 @@
 var db = require('./config/db');
 var nodeServer = require('./config/server');
 var sqlQuery = require('./queries/queries')
-var trans = require('./transactions/dbTransactions')
+var trans = require('./transactions/dbTransactions');
 
 nodeServer.start();
 

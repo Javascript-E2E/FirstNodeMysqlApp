@@ -19,6 +19,7 @@ var selectQuery = (query,req,resp) => {
 
             })
         }
+        console.log(resp);
     });
 
     return resp;
@@ -35,5 +36,6 @@ var formatQuery = (query,params) => {
 
 
 module.exports = {
-    selectQuery
+    selectQuery,
+    formatQuery
 }
